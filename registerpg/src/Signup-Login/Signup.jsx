@@ -1,14 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import email_icon from '../Assets/email.png'
 import password_icon from '../Assets/password.png'
 import './Signup.css'
 import { Link } from "react-router-dom";
-
-
-
-
-
-
 
 
 
