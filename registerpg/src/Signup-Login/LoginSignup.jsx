@@ -4,7 +4,7 @@ import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
 import person_icon from '../Assets/person.png';
 import { Link } from "react-router-dom";
-import axios from 'axios';
+
 
 export const LoginSignup = () => {
     // Define state variables
