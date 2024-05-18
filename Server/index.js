@@ -13,7 +13,7 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cors());
 
-// we want to post the data that we get into our db
+// we want to post the data that we get into our db  0gjjmXM8XM43i913   daudalaramadan
 // to do that we create a separate model inside another folder and file
 // the model is like how we want our db to look like in our db
 // ie like specifying the data types
