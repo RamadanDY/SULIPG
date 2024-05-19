@@ -15,16 +15,10 @@ const Signup = () => {
     const [loginEmail,setLoginEmail] =  useState("");
     const [loginPassword,setLoginPassword] =  useState("");
 
-
-
     // we create a few new functions 
     const register = async ( ) => {}
     const login = async ( ) => {}
     const logout = async ( ) => {}
-
-
-
-
 
 
   
@@ -43,7 +37,7 @@ const Signup = () => {
             </div>
             <div className="input">
                 <img src={password_icon} alt="" />
-                <input type="Password" placeholder='Password' />
+                <input type="Password" placeholder='Password'  onChange={(event) => {setRegisterpassword(event.target.value)}}/>
             </div>
         </div>
         <div className="forgot-password">lost Password? <span>Click here</span></div>
