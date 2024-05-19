@@ -7,7 +7,27 @@ import { Link } from "react-router-dom";
 
 
 
+
 const Signup = () => {
+    // holds the value when it changes 
+    const [registerEmail,setRegisterEmail] =  useState("");
+    const [registerPassword, setRegisterpassword] =  useState("");
+    const [loginEmail,setLoginEmail] =  useState("");
+    const [loginPassword,setLoginPassword] =  useState("");
+
+
+
+    // we create a few new functions 
+    const register = async ( ) => {}
+    const login = async ( ) => {}
+    const logout = async ( ) => {}
+
+
+
+
+
+
+  
   return (
     <div className='container md'>
         <div className="header">
@@ -18,7 +38,7 @@ const Signup = () => {
         <div className="inputs">
             <div className="input" >
                 <img src={email_icon} alt="" />
-                <input type="email" placeholder='Email id'/>
+                <input type="email" placeholder='Email id' onChange={(event) => {setRegisterEmail(event.target.value)}}/>
                 
             </div>
             <div className="input">
