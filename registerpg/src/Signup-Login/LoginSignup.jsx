@@ -4,15 +4,25 @@ import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
 // import person_icon from '../Assets/person.png';
 import { Link } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import { auth } from '../firebase'
 
 export const LoginSignup = () => {
     const [registerEmail,setRegisterEmail] =  useState("");
     const [registerPassword, setRegisterpassword] =  useState("");
-    const [loginEmail,setLoginEmail] =  useState("");
-    const [loginPassword,setLoginPassword] =  useState("");
+
 
     // we create a few new functions 
-    const register = async ( ) => {}
+    const register = async () => {
+        try{
+            const user = await createUserWithEmailAndPassword(auth,registerEmail,registerPassword)
+             console.log(user)
+        } catch(error) {
+            console.log(error.message)
+
+        }
+
+    }
     const login = async ( ) => {}
     const logout = async ( ) => {}
     
@@ -35,13 +45,13 @@ export const LoginSignup = () => {
                     </div>
                     <div className="input">
                         <img src={password_icon} alt="" />
-                        <input type="password" placeholder='Password'   onChange={(event) => {setRegisterEmail(event.target.value)}}/>
+                        <input type="password" placeholder='Password'   onChange={(event) => {setRegisterpassword(event.target.value)}}/>
                     </div>
                 </div>
                 <div className="forgot-password">lost Password? <span>Click here</span></div>
                 <div className="submit-container">
                     <button className="submit" type='submit'>Sign Up</button>
-                    <Link to="/signup" className="submit" type='submit'>Login</Link>
+                    <Link to="/signup" onClick={register} className="submit" type='submit'>Login</Link>
                 </div>
             </form>
         </div>
