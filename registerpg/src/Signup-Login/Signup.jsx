@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
 import './Signup.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../firebase';
 
 const Signup = () => {
   // Holds the value when it changes
+  const [errorMessage, setErrorMessage] = useState(null)
+  const navigate = useNavigate()
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
@@ -29,8 +31,12 @@ const Signup = () => {
   const register = async () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, loginEmail, loginPassword);
+      if(user.ok){
+        navigate('/login')
+      }
       console.log(user);
     } catch (error) {
+      setErrorMessage(error.message)
       console.log(error.message);
     }
   };
@@ -71,8 +77,13 @@ const Signup = () => {
       <div>User:</div>
       {user && user.email ? <div>{user.email}</div> : <div>No user logged in</div>}
       <div className="submit-container">
-        <Link to='/Log-In' onClick={register} className="submit" type='submit'>Sign Up</Link>
+        <button onClick={register} className="submit" type='submit'>Sign Up</button>
       </div>
+      {
+                   errorMessage ? (
+                        <div className='text-red-500'>{errorMessage}</div>
+                    ) : (null)
+        }
     </div>
   );
 }
